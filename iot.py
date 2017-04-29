@@ -9,7 +9,7 @@ MAX_PAGE_NUM = 26
 BASE_URL = 'http://www.bbc.co.uk/programmes/b006qykl/episodes/downloads';
 
 def downloadMp3(url):
-	print(url)
+	print("   - " + url)
 	file_name = "downloads/" + url.split('/')[-1]
 	req = urllib.request.Request(url, headers={'User-Agent': "Magic Browser"}) 
 	u = urllib.request.urlopen( req )
@@ -26,7 +26,7 @@ def downloadAllOnPage(num):
 	url = BASE_URL
 	if num >= 2:
 		url += ("?page=" + num)
-	print("page" + url)
+	print("page: " + url)
 	r = requests.get(url)
 	soup = BeautifulSoup(r.text, "lxml")
 	for link in soup.find_all('a'):
