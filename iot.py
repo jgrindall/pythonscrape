@@ -25,7 +25,7 @@ def downloadMp3(url):
 def downloadAllOnPage(num):
 	url = BASE_URL
 	if num >= 2:
-		url += ("?page=" + num)
+		url += ("?page=" + str(num))
 	print("page: " + url)
 	r = requests.get(url)
 	soup = BeautifulSoup(r.text, "lxml")
@@ -35,5 +35,7 @@ def downloadAllOnPage(num):
 			downloadMp3(url)
 
 
-for i in range(1, MAX_PAGE_NUM):
-   downloadAllOnPage(i)
+for i in range(2, MAX_PAGE_NUM):
+	print("download page " + str(i));
+	downloadAllOnPage(i)
+	print("done");
